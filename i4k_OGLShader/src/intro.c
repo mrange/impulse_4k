@@ -9,7 +9,7 @@
 #include <math.h>
 #include "config.h"
 #include "ext.h"
-#include "shader.inl"
+#include "shader.h"
 #include "fp.h"
 
 //=================================================================================================================
@@ -20,6 +20,9 @@ int intro_init( void )
 {
     if( !EXT_Init() )
         return 0;
+
+    char * vsh = getVertexShader();
+    char * fsh = getFragmentShader();  
 
     int vsid = oglCreateShaderProgramv( GL_VERTEX_SHADER,   1, &vsh );
         fsid = oglCreateShaderProgramv( GL_FRAGMENT_SHADER, 1, &fsh );

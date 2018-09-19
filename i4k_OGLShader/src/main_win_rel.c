@@ -84,7 +84,7 @@ void entrypoint( void )
     do 
     {
         t = timeGetTime() - to;
-        intro_do( t );
+        intro_do( t, XRES, YRES ); // TODO: GetClientRect
         wglSwapLayerBuffers( hDC, WGL_SWAP_MAIN_PLANE ); //SwapBuffers( hDC );
     }while ( !GetAsyncKeyState(VK_ESCAPE) && t<(MZK_DURATION*1000) );
 

@@ -136,18 +136,19 @@
     <ClInclude Include="src\intro.h" />
     <ClInclude Include="src\main.h" />
     <ClInclude Include="src\mzk.h" />
-    <ClInclude Include="src\system.h" />
+    <ClInclude Include="src\shader.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\ext.cpp" />
-    <ClCompile Include="src\intro.cpp" />
-    <ClCompile Include="src\main_win_deb.cpp">
+    <ClCompile Include="src\ext.c" />
+    <ClCompile Include="src\intro.c" />
+    <ClCompile Include="src\main_win_deb.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="src\main_win_rel.cpp">
+    <ClCompile Include="src\main_win_rel.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="src\mzk.cpp" />
+    <ClCompile Include="src\mzk.c" />
+    <ClCompile Include="src\shader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\shader.inl" />
