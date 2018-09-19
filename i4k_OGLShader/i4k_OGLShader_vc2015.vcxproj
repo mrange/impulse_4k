@@ -217,9 +217,6 @@
     <ClCompile Include="src\mzk.c" />
     <ClCompile Include="src\shader.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="src\shader.inl" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

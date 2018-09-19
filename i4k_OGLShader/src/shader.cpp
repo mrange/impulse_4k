@@ -205,7 +205,7 @@ void pR45(inout vec2 p)
 float distanceEstimator(in vec3 p, out vec3 col, out float ref)
 {
   float b = sdRoundCube(p - vec3(0.0, -1.41, 0.0), 1.0); 
-  float i = impulse2(p, col, ref);
+  float i = impulse1(p, col, ref);
   float f = min(b, i);
   if (f == b)
   {
