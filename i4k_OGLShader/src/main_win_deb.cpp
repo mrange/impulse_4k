@@ -248,7 +248,11 @@ int WINAPI WinMain( HINSTANCE instance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             DispatchMessage( &msg );
         }
 
-        intro_do( t );
+
+        RECT rect = { XRES, YRES };
+        GetClientRect(info->hWnd, &rect);
+
+        intro_do( t, rect.right - rect.left, rect.bottom - rect.top );
 
         if( t>(MZK_DURATION*1000) ) done = 1;
 

@@ -27,7 +27,7 @@ layout (location=0) uniform vec4 fpar[];
 layout (location=0) out vec4 co;
 in vec2 p;
 
-vec2 iResolution = vec2(1.0, 1.0);
+vec2 iResolution = vec2(1.0);
 float iTime = 1.0;
 
 // -----------------------------------------------------------------------------
@@ -473,7 +473,9 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
 void main()
 {
   iTime = fpar[0].x;
-  vec2 pp = (p + 1.0)*0.5;
+  iResolution.x = fpar[0].y;
+  iResolution.y = fpar[0].z;
+  vec2 pp = (p + 1.0)*0.5*iResolution.xy;
 
   mainImage(co, pp);
 }

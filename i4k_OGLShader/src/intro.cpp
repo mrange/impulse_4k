@@ -48,7 +48,7 @@ int intro_init( void )
 
 static float fparams[4*1];
 
-void intro_do( long time )
+void intro_do( long time, int xres, int yres )
 {
     //--- update parameters -----------------------------------------
 
@@ -56,8 +56,8 @@ void intro_do( long time )
 
     // camera position
     fparams[ 0] = t;
-    fparams[ 1] = 0.0f;
-    fparams[ 2] = 0.0f;
+    fparams[ 1] = xres;
+    fparams[ 2] = yres;
     fparams[ 3] = 0.0f;
 
     //--- render -----------------------------------------
