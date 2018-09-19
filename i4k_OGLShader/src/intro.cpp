@@ -46,7 +46,7 @@ int intro_init( void )
 
 //=================================================================================================================
 
-static float fparams[4*4];
+static float fparams[4*1];
 
 void intro_do( long time )
 {
@@ -55,22 +55,14 @@ void intro_do( long time )
     const float t  = 0.001f*(float)time;
 
     // camera position
-    fparams[ 0] = 2.0f*sinf(1.0f*t+0.1f);
+    fparams[ 0] = t;
     fparams[ 1] = 0.0f;
-    fparams[ 2] = 2.0f*cosf(1.0f*t);
-    // camera target
-    fparams[ 4] = 0.0f;
-    fparams[ 5] = 0.0f;
-    fparams[ 6] = 0.0f;
-    // sphere
-    fparams[ 8] = 0.0f;
-    fparams[ 9] = 0.0f;
-    fparams[10] = 0.0f;
-    fparams[11] = 1.0f;
+    fparams[ 2] = 0.0f;
+    fparams[ 3] = 0.0f;
 
     //--- render -----------------------------------------
 
-    oglProgramUniform4fv( fsid, 0, 4, fparams );
+    oglProgramUniform4fv( fsid, 0, 1, fparams );
 
     glRects( -1, -1, 1, 1 );
 }
