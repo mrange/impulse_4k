@@ -31,7 +31,7 @@ int intro_init( void )
     oglUseProgramStages(pid, GL_FRAGMENT_SHADER_BIT, fsid);
 
     #ifdef DEBUG
-        int		result;
+        int     result;
         char    info[1536];
         oglGetProgramiv( vsid, GL_LINK_STATUS, &result ); oglGetProgramInfoLog( vsid, 1024, NULL, (char *)info );
         // if( !result ) DebugBreak();

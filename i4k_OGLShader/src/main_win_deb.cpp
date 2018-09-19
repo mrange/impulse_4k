@@ -27,7 +27,7 @@ typedef struct
     //---------------
     int         full;
     //---------------
-    char        wndclass[4];	// window class and title :)
+    char        wndclass[4];  // window class and title :)
     //---------------
 }WININFO;
 
@@ -50,36 +50,35 @@ static PIXELFORMATDESCRIPTOR pfd =
     };
 
 static WININFO wininfo = {  0,0,0,0,0,
-							{'i','q','_',0}
+                            {'i','q','_',0}
                             };
 
 static const int wavHeader[11] = {
-    0x46464952, 
-    MZK_NUMSAMPLESC*2+36, 
-    0x45564157, 
-    0x20746D66, 
-    16, 
-    WAVE_FORMAT_PCM|(MZK_NUMCHANNELS<<16), 
-    MZK_RATE, 
-    MZK_RATE*MZK_NUMCHANNELS*sizeof(short), 
+    0x46464952,
+    MZK_NUMSAMPLESC*2+36,
+    0x45564157,
+    0x20746D66,
+    16,
+    WAVE_FORMAT_PCM|(MZK_NUMCHANNELS<<16),
+    MZK_RATE,
+    MZK_RATE*MZK_NUMCHANNELS*sizeof(short),
     (MZK_NUMCHANNELS*sizeof(short))|((8*sizeof(short))<<16),
-    0x61746164, 
+    0x61746164,
     MZK_NUMSAMPLESC*sizeof(short) };
 
 //==============================================================================================
 
 static LRESULT CALLBACK WndProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )
 {
-	// salvapantallas
-	if( uMsg==WM_SYSCOMMAND && (wParam==SC_SCREENSAVE || wParam==SC_MONITORPOWER) )
-		return( 0 );
-
-	// boton x o pulsacion de escape
-	if( uMsg==WM_CLOSE || uMsg==WM_DESTROY || (uMsg==WM_KEYDOWN && wParam==VK_ESCAPE) )
-	{
-		PostQuitMessage(0);
+    if( uMsg==WM_SYSCOMMAND && (wParam==SC_SCREENSAVE || wParam==SC_MONITORPOWER) )
         return( 0 );
-	}
+
+    // boton x o pulsacion de escape
+    if( uMsg==WM_CLOSE || uMsg==WM_DESTROY || (uMsg==WM_KEYDOWN && wParam==VK_ESCAPE) )
+    {
+        PostQuitMessage(0);
+        return( 0 );
+    }
 
     if( uMsg==WM_SIZE )
     {
@@ -115,13 +114,13 @@ static void window_end( WININFO *info )
     if( info->full )
     {
         ChangeDisplaySettings( 0, 0 );
-		while( ShowCursor( 1 )<0 ); // show cursor
+        while( ShowCursor( 1 )<0 ); // show cursor
     }
 }
 
 static int window_init( WININFO *info )
 {
-	unsigned int	PixelFormat;
+    unsigned int	PixelFormat;
     DWORD			dwExStyle, dwStyle;
     DEVMODE			dmScreenSettings;
     RECT			rec;
@@ -134,7 +133,7 @@ static int window_init( WININFO *info )
     wc.hInstance     = info->hInstance;
     wc.lpszClassName = info->wndclass;
     wc.hbrBackground =(HBRUSH)CreateSolidBrush(0x00102030);
-	
+
     if( !RegisterClass(&wc) )
         return( 0 );
 
@@ -152,13 +151,13 @@ static int window_init( WININFO *info )
         dwExStyle = WS_EX_APPWINDOW;
         dwStyle   = WS_VISIBLE | WS_POPUP;
 
-		while( ShowCursor( 0 )>=0 );	// hide cursor
+        while( ShowCursor( 0 )>=0 );	// hide cursor
     }
     else
     {
         dwExStyle = 0;
         dwStyle   = WS_VISIBLE | WS_CAPTION | WS_SYSMENU | WS_MAXIMIZEBOX | WS_OVERLAPPED;
-		dwStyle   = WS_VISIBLE | WS_OVERLAPPEDWINDOW|WS_POPUP;
+        dwStyle   = WS_VISIBLE | WS_OVERLAPPEDWINDOW|WS_POPUP;
 
     }
 
@@ -239,12 +238,12 @@ int WINAPI WinMain( HINSTANCE instance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     long to = timeGetTime();
     while( !done )
     {
-		long t = timeGetTime() - to;
+        long t = timeGetTime() - to;
 
         while( PeekMessage(&msg,0,0,0,PM_REMOVE) )
         {
             if( msg.message==WM_QUIT ) done=1;
-		    TranslateMessage( &msg );
+            TranslateMessage( &msg );
 
             DispatchMessage( &msg );
         }

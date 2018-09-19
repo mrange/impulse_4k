@@ -43,7 +43,7 @@ int EXT_Init( void )
         myglfunc[i] = glXGetProcAddress( (const unsigned char *)strs[i] );
         #endif
         if( !myglfunc[i] )
-			return( 0 );
+        return( 0 );
     }
     return( 1 );
 }
